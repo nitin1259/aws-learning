@@ -3,7 +3,8 @@ Parameters:
     Type: String
   S3KeyParam:
     Type: String
-
+  S3ObjectVersionParam:
+    Type: String
 
 Resources:
   LambdaExecutionRole:
@@ -55,7 +56,9 @@ Resources:
           Ref: S3BucketParam
         S3Key: 
           Ref: S3KeyParam
-      Runtime: "nodejs10.x"
+        S3ObjectVersion:
+          Ref: S3ObjectVersionParam
+      Runtime: "nodejs12.x"
       Timeout: 10
       # Enable XRay
       TracingConfig:
